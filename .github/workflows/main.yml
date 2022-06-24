@@ -63,7 +63,7 @@ jobs:
           host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true
           user: ${{secrets.USER}}                                      # Remote server user - REQUIRED true                          # User password - REQUIRED at least one of "password" or "key" 
           key: ${{secrets.KEY}}                                        # Remote server private key - REQUIRED at least one of "password" or "key" 
-          pre_upload: echo "Removed Files"  # Command to run via ssh before scp upload - REQUIRED false
+          pre_upload: sudo rm -r /var/www/html/*  # Command to run via ssh before scp upload - REQUIRED false
           post_upload: sudo mv public/* /var/www/html  # Command to run via ssh after scp upload - REQUIRED false
           ssh_options: -o StrictHostKeyChecking=no                     # A set of ssh_option separated by -o - REQUIRED false - DEFAULT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
           scp_options: -v                                              # Flags to use during scp - REQUIRED false - DEFAULT ''
